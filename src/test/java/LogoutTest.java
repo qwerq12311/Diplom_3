@@ -1,4 +1,7 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
@@ -9,6 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
+@Epic("Diplom 3")
 
 public class LogoutTest {
     private WebDriver chromeDriver;
@@ -43,6 +48,9 @@ public class LogoutTest {
 
 
     @Test
+    @DisplayName("Тест выхода из аккаунта")
+    @Description("Проверка функциональности выхода из аккаунта")
+
     public void LogoutTest() {
         System.out.println("Starting the test...");
 
@@ -69,8 +77,6 @@ public class LogoutTest {
         pageObject.clickLoginButton();
         System.out.println("Clicked the login button.");
 
-        //chromeWait.until(ExpectedConditions.invisibilityOfElementLocated(pageObject.getLoadingImageLocator()));
-        //System.out.println("Loading finished.");
 
         // Ожидание успешного входа и перехода на главную страницу
         chromeWait.until(ExpectedConditions.urlToBe("https://stellarburgers.nomoreparties.site/"));

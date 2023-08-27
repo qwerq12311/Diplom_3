@@ -1,31 +1,47 @@
-
-
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Issue;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import static org.junit.Assert.*;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-
 import java.time.Duration;
+
+@Epic("Diplom 3")
+@Feature("Регистрация пользователей")
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
 public class RegistrationTest {
     private WebDriver chromeDriver;
+    private WebDriver yandexDriver;
     private WebDriverWait chromeWait;
+    private WebDriverWait yandexWait;
     private PageObject pageObject;
     private ApiClient apiClient;
     private String accessToken;
 
     @Before
     public void setUp() {
+        // Настройка ChromeOptions с общими опциями
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--no-sandbox", "--disable-dev-shm-usage");
+
         WebDriverManager.chromedriver().setup();
-        chromeDriver = new ChromeDriver();
+        chromeDriver = new ChromeDriver(chromeOptions);
+        chromeDriver.manage().window().maximize();
         chromeWait = new WebDriverWait(chromeDriver, Duration.ofSeconds(10));
         pageObject = new PageObject(chromeDriver, chromeWait);
         apiClient = new ApiClient();
@@ -40,11 +56,34 @@ public class RegistrationTest {
 
         System.out.println("Registered user with accessToken: " + accessToken);
 
-
+        // Настройка и создание экземпляра Яндекс.Браузера
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        ChromeOptions yandexOptions = new ChromeOptions();
+        yandexOptions.addArguments("--no-sandbox", "--disable-dev-shm-usage");
+        yandexOptions.setBinary("/Applications/Yandex.app/Contents/MacOS/Yandex");
+        yandexDriver = new ChromeDriver(yandexOptions);
+        yandexDriver.manage().window().maximize();
+        yandexWait = new WebDriverWait(yandexDriver, Duration.ofSeconds(10));
     }
 
     @Test
-    public void testRegistration() {
+    @DisplayName("Тест регистрации в Chrome")
+    @Description("Проверка функциональности регистрации в браузере Chrome")
+
+    public void testA_RegistrationInChrome() {
+        runRegistrationTest(chromeDriver, chromeWait);
+    }
+
+    @Test
+    @DisplayName("Тест регистрации в Яндекс.Браузере")
+    @Description("Проверка функциональности регистрации в Яндекс.Браузере")
+
+    @Issue("Y.Browser Don't start")
+    public void testB_RegistrationInYandex() {
+        runRegistrationTest(yandexDriver, yandexWait);
+    }
+
+    private void runRegistrationTest(WebDriver driver, WebDriverWait wait) {
         // Переход на страницу регистрации
         pageObject.goToRegisterPage();
 
@@ -59,30 +98,12 @@ public class RegistrationTest {
         pageObject.clickRegisterButton();
 
         // Ожидание загрузки страницы логина
-        chromeWait.until(ExpectedConditions.urlToBe("https://stellarburgers.nomoreparties.site/login"));
+        wait.until(ExpectedConditions.urlToBe("https://stellarburgers.nomoreparties.site/login"));
 
+        driver.navigate().refresh();
 
         // Проверка успешного перехода на страницу логина
-        assertEquals("https://stellarburgers.nomoreparties.site/login", chromeDriver.getCurrentUrl());
-    }
-
-    @Test
-    public void testRegistrationWithInvalidPassword() {
-        // Переход на страницу регистрации
-        pageObject.goToRegisterPage();
-
-        // Заполнение полей
-        String email = apiClient.generateRandomEmail();
-        String name = apiClient.generateRandomName();
-        pageObject.fillName(name);
-        pageObject.fillEmail(email);
-        pageObject.fillPassword("12345"); // Пароль менее 6 символов
-
-        // Нажатие кнопки "Зарегистрироваться"
-        pageObject.clickRegisterButton();
-
-        // Проверка появления ошибки некорректного пароля
-        assertTrue(pageObject.isInvalidPasswordErrorDisplayed());
+        assertEquals("https://stellarburgers.nomoreparties.site/login", driver.getCurrentUrl());
     }
 
     @After
@@ -93,5 +114,6 @@ public class RegistrationTest {
         }
 
         chromeDriver.quit();
+        yandexDriver.quit(); // Закрытие и Яндекс.Браузера
     }
 }

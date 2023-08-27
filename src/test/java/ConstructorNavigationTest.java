@@ -7,8 +7,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import io.qameta.allure.*;
+import io.qameta.allure.junit4.DisplayName;
 
 import java.time.Duration;
+
+@Epic("Diplom 3")
+@Feature("Переход из личного кабинета в конструктор")
 
 public class ConstructorNavigationTest {
     private WebDriver chromeDriver;
@@ -16,7 +21,6 @@ public class ConstructorNavigationTest {
     private PageObject pageObject;
     private ApiClient apiClient;
     private String accessToken;
-
     private String emailAfterRegistration;
 
     @Before
@@ -42,6 +46,9 @@ public class ConstructorNavigationTest {
     }
 
     @Test
+    @DisplayName("Тест нажатия кнопки конструктора")
+    @Description("Проверка функциональности нажатия кнопки конструктора")
+
     public void constructorButtonClickTest() {
         System.out.println("Starting the test...");
 
@@ -68,8 +75,6 @@ public class ConstructorNavigationTest {
         pageObject.clickLoginButton();
         System.out.println("Clicked the login button.");
 
-        //chromeWait.until(ExpectedConditions.invisibilityOfElementLocated(pageObject.getLoadingImageLocator()));
-        //System.out.println("Loading finished.");
 
         // Ожидание успешного входа и перехода на главную страницу
         chromeWait.until(ExpectedConditions.urlToBe("https://stellarburgers.nomoreparties.site/"));
@@ -92,6 +97,9 @@ public class ConstructorNavigationTest {
     }
 
     @Test
+    @DisplayName("Тест нажатия логотипа ")
+    @Description("Проверка функциональности нажатия логотипа ")
+
     public void constructorLogoClickTest() {
         System.out.println("Starting the test...");
 
@@ -117,9 +125,6 @@ public class ConstructorNavigationTest {
         // Нажатие кнопки "Войти"
         pageObject.clickLoginButton();
         System.out.println("Clicked the login button.");
-
-        //chromeWait.until(ExpectedConditions.invisibilityOfElementLocated(pageObject.getLoadingImageLocator()));
-        //System.out.println("Loading finished.");
 
         // Ожидание успешного входа и перехода на главную страницу
         chromeWait.until(ExpectedConditions.urlToBe("https://stellarburgers.nomoreparties.site/"));

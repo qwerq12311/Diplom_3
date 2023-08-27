@@ -7,6 +7,8 @@ import static io.restassured.RestAssured.given;
 
 public class ApiClient {
 
+
+    // URL
     public static final String BASE_URL = "https://stellarburgers.nomoreparties.site/api";
     private static final String ENDPOINT_REGISTER_USER = "/auth/register";
     private static final String ENDPOINT_DELETE_USER = "/auth/user";
@@ -14,6 +16,8 @@ public class ApiClient {
     public static void setup() {
         io.restassured.RestAssured.baseURI = BASE_URL;
     }
+
+    // Создание уникального пользователя
 
     public static String generateRandomEmail() {
         Faker faker = new Faker();
@@ -29,6 +33,9 @@ public class ApiClient {
     public static String getUserPassword() {
         return userPassword;
     }
+
+
+    // Методы для работы с пользователем
 
     public static Response registerUser(String email, String userPassword, String name) {
         JsonObject requestBody = new JsonObject();

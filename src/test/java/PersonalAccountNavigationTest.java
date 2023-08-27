@@ -1,4 +1,8 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
@@ -10,6 +14,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
+@Epic("Diplom 3")
+@Feature("Навигация в личном кабинете")
 
 public class PersonalAccountNavigationTest {
     private WebDriver chromeDriver;
@@ -43,6 +50,9 @@ public class PersonalAccountNavigationTest {
     }
 
     @Test
+    @DisplayName("Тест навигации в личном кабинете")
+    @Description("Проверка функциональности навигации в личном кабинете")
+
     public void personalAccountNavigationTest() {
         System.out.println("Starting the test...");
 
@@ -68,9 +78,6 @@ public class PersonalAccountNavigationTest {
         // Нажатие кнопки "Войти"
         pageObject.clickLoginButton();
         System.out.println("Clicked the login button.");
-
-        //chromeWait.until(ExpectedConditions.invisibilityOfElementLocated(pageObject.getLoadingImageLocator()));
-        //System.out.println("Loading finished.");
 
         // Ожидание успешного входа и перехода на главную страницу
         chromeWait.until(ExpectedConditions.urlToBe("https://stellarburgers.nomoreparties.site/"));

@@ -1,7 +1,7 @@
-import com.github.javafaker.Faker;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -9,7 +9,7 @@ public class PageObject {
 
     private WebDriver driver;
     private WebDriverWait wait;
-    private static final String STATIC_PASSWORD = "MySecretPassword123"; // Статический пароль
+
 
     // Адреса страниц
     private String registerPageUrl = "https://stellarburgers.nomoreparties.site/register";
@@ -18,7 +18,7 @@ public class PageObject {
     private String mainPageUrl = "https://stellarburgers.nomoreparties.site";
     private String forgotPasswordPageUrl = "https://stellarburgers.nomoreparties.site/forgot-password";
 
-    // Локаторы
+    // Локаторы элементов
     private By nameInput = By.xpath("//label[text()='Имя']/following-sibling::input[@name='name']");
     private By emailInput = By.xpath("//label[text()='Email']/following-sibling::input[@name='name']");
     private By passwordInput = By.xpath("//label[text()='Пароль']/following-sibling::input[@name='Пароль']");
@@ -38,13 +38,21 @@ public class PageObject {
 
     private By headerMainLogo = By.xpath("//div[@class='AppHeader_header__logo__2D0X2']//a//*[name()='svg']");
 
+    // Локаторы конструктора
+    private By saucesLocator = By.xpath("//span[@class='text text_type_main-default' and text()='Соусы']");
+    private By fillingsLocator = By.xpath("//span[@class='text text_type_main-default' and text()='Начинки']");
+    private By bunsLocator = By.xpath("//span[@class='text text_type_main-default' and text()='Булки']");
 
+    private By activeTabLocator = By.cssSelector(".tab_tab_type_current__2BEPc");
+
+
+    // Web driver
     public PageObject(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
     }
 
-    // Методы для работы с элементами
+    // Методы для взаимодействия с элементами
     public void fillName(String name) {
         driver.findElement(nameInput).sendKeys(name);
     }
@@ -69,7 +77,6 @@ public class PageObject {
         driver.findElement(loginButtonMainPageLocator).click();
     }
 
-
     public void clickPersonalAccountLink() {
         driver.findElement(personalAccountLink).click();
     }
@@ -86,30 +93,22 @@ public class PageObject {
         driver.findElement(logoutButton).click();
     }
 
-    // Методы для генерации уникальных данных
-    public String generateUniqueName() {
-        Faker faker = new Faker();
-        return faker.name().firstName() + faker.number().randomNumber();
+    public void clickLoginButtonMainPage() {
+        driver.findElement(loginButtonMainPageLocator).click();
     }
 
-    public String generateUniqueEmail() {
-        Faker faker = new Faker();
-        return "test" + faker.number().randomNumber() + "@example.com";
+    public void clickLoginButtonRegisterPage() {
+        driver.findElement(loginButtonRegisterPageLocator).click();
     }
+
+
+
 
     // Методы для перехода на страницы
     public void goToRegisterPage() {
         driver.get(registerPageUrl);
     }
 
-
-    public void goToLoginPage() {
-        driver.get(loginPageUrl);
-    }
-
-    public void goToAccountPage() {
-        driver.get(accountPageUrl);
-    }
     public String getAccountPageUrl() {
         return accountPageUrl;
     }
@@ -122,33 +121,52 @@ public class PageObject {
         driver.get(forgotPasswordPageUrl);
     }
 
-    public static String getStaticPassword() {
-        return STATIC_PASSWORD;
+
+
+    // Методы для взаимодействия с элементами конструктора
+
+    public void clickFillings() {
+        driver.findElement(fillingsLocator).click();
     }
 
-    public boolean isInvalidPasswordErrorDisplayed() {
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(invalidPasswordError));
-            return true;
-        } catch (TimeoutException e) {
-            return false;
-        }
+    public void clickSauces() {
+        driver.findElement(saucesLocator).click();
     }
 
-    public boolean isOnMainPage() {
-        return driver.getCurrentUrl().equals(mainPageUrl);
+    public void clickBuns() {
+        driver.findElement(bunsLocator).click();
     }
 
-    public void clickLoginButtonMainPage() {
-        driver.findElement(loginButtonRegisterPageLocator).click();
+
+    // Получение локаторов для вкладок
+    public By getFillingsLocator() {
+        return fillingsLocator;
     }
 
-    public void clickLoginButtonRegisterPage() {
-        driver.findElement(loginButtonRegisterPageLocator).click();
+    public By getSaucesLocator() {
+        return saucesLocator;
     }
 
-    public void clickLoginButtonForgotPasswordPage() {
-        driver.findElement(loginButtonRegisterPageLocator).click();
+    public By getBunsLocator() {
+        return bunsLocator;
     }
 
+
+    public By getActiveTabLocator() {
+        return activeTabLocator;
+    }
+
+
+    // Метод для проверки активной вкладки
+    public boolean isTabActive(By tabLocator) {
+        WebElement tabElement = driver.findElement(tabLocator);
+
+        // Явное ожидание, чтобы убедиться, что вкладка стала активной
+        wait.until(ExpectedConditions.attributeContains(tabElement, "class", "tab_tab_type_current__2BEPc"));
+        String tabClass = tabElement.getAttribute("class");
+        return tabClass.contains("tab_tab_type_current__2BEPc");
+    }
 }
+
+
+
