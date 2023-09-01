@@ -19,7 +19,7 @@ public class LogoutTest {
     private WebDriver chromeDriver;
     private WebDriverWait chromeWait;
     private PageObject pageObject;
-    private ApiClient apiClient;
+
     private String accessToken;
 
     private String emailAfterRegistration;

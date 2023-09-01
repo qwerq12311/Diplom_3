@@ -1,8 +1,6 @@
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PageObject {
@@ -105,8 +103,7 @@ public class PageObject {
 
 
     // Методы для перехода на страницы
-    public void goToRegisterPage() {
-        driver.get(registerPageUrl);
+    public void goToRegisterPage() { driver.navigate().to(registerPageUrl);
     }
 
     public String getAccountPageUrl() {
@@ -114,12 +111,21 @@ public class PageObject {
     }
 
     public void goToMainPage() {
-        driver.get(mainPageUrl);
+        driver.navigate().to(mainPageUrl);
     }
 
     public void goToForgotPasswordPage() {
-        driver.get(forgotPasswordPageUrl);
+        driver.navigate().to(forgotPasswordPageUrl);
     }
+
+    public void openLoginPage() {
+        driver.navigate().to(loginPageUrl);
+    }
+
+    public String getLoginPageUrl() {
+        return loginPageUrl;
+    }
+
 
 
 
