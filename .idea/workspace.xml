@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9098dd21-629e-496e-af48-89673857beea" name="Changes" comment="v3 . all done">
+    <list default="true" id="9098dd21-629e-496e-af48-89673857beea" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ApiClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/PageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PageObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ConstructorNavigationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ConstructorNavigationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginTest.java" afterDir="false" />
@@ -30,6 +28,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Radchenko Aleksey &lt;radchenko.aleksei@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="main" />
@@ -90,7 +93,7 @@
       <command value="mvn clean test" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PersonalAccountNavigationTest.personalAccountNavigationTest">
+  <component name="RunManager" selected="JUnit.MainSectionsTest">
     <configuration name="ConstructorNavigationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Diplom_3" />
       <option name="PACKAGE_NAME" value="" />
@@ -100,21 +103,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConstructorNavigationTest.constructorButtonClickTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MainSectionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Diplom_3" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ConstructorNavigationTest" />
-      <option name="METHOD_NAME" value="constructorButtonClickTest" />
+      <option name="MAIN_CLASS_NAME" value="MainSectionsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainSectionsTest.selectSaucesSectionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Diplom_3" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MainSectionsTest" />
+      <option name="METHOD_NAME" value="selectSaucesSectionTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginTest.loginButtonForgotPasswordPageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MainSectionsTest.tesBunsTab" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Diplom_3" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LoginTest" />
-      <option name="METHOD_NAME" value="loginButtonForgotPasswordPageTest" />
+      <option name="MAIN_CLASS_NAME" value="MainSectionsTest" />
+      <option name="METHOD_NAME" value="tesBunsTab" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -130,22 +142,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegistrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Diplom_3" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="RegistrationTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PersonalAccountNavigationTest.personalAccountNavigationTest" />
+        <item itemvalue="JUnit.MainSectionsTest" />
+        <item itemvalue="JUnit.MainSectionsTest.tesBunsTab" />
+        <item itemvalue="JUnit.MainSectionsTest.selectSaucesSectionTest" />
         <item itemvalue="JUnit.ConstructorNavigationTest" />
-        <item itemvalue="JUnit.LoginTest.loginButtonForgotPasswordPageTest" />
-        <item itemvalue="JUnit.RegistrationTest" />
-        <item itemvalue="JUnit.ConstructorNavigationTest.constructorButtonClickTest" />
+        <item itemvalue="JUnit.PersonalAccountNavigationTest.personalAccountNavigationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -158,7 +161,8 @@
       <option name="presentableId" value="Default" />
       <updated>1692980519531</updated>
       <workItem from="1692980520744" duration="37669000" />
-      <workItem from="1693161944131" duration="7772000" />
+      <workItem from="1693161944131" duration="8146000" />
+      <workItem from="1693596196211" duration="4112000" />
     </task>
     <task id="LOCAL-00001" summary="1. start">
       <created>1692988648397</created>
@@ -174,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693012818903</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="v3 . all done">
+      <created>1693171616440</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1693171616440</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +194,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1. start" />
     <MESSAGE value="1. start&#10;2. 1-5 ready . haveToDO - +YaBr + Reports + 6 check" />
-    <option name="LAST_COMMIT_MESSAGE" value="1. start&#10;2. 1-5 ready . haveToDO - +YaBr + Reports + 6 check" />
+    <MESSAGE value="v3 . all done" />
+    <option name="LAST_COMMIT_MESSAGE" value="v3 . all done" />
   </component>
 </project>

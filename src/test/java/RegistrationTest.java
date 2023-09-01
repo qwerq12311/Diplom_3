@@ -30,7 +30,6 @@ public class RegistrationTest {
     private WebDriverWait chromeWait;
     private WebDriverWait yandexWait;
     private PageObject pageObject;
-    private ApiClient apiClient;
     private String accessToken;
 
     @Before
@@ -44,14 +43,14 @@ public class RegistrationTest {
         chromeDriver.manage().window().maximize();
         chromeWait = new WebDriverWait(chromeDriver, Duration.ofSeconds(10));
         pageObject = new PageObject(chromeDriver, chromeWait);
-        apiClient = new ApiClient();
+
 
         // Создание уникального клиента через API и получение AccessToken
-        apiClient.setup();
-        String email = apiClient.generateRandomEmail();
-        String name = apiClient.generateRandomName();
+        ApiClient.setup();
+        String email = ApiClient.generateRandomEmail();
+        String name = ApiClient.generateRandomName();
         String password = ApiClient.getUserPassword();
-        Response registrationResponse = apiClient.registerUser(email, password, name);
+        Response registrationResponse = ApiClient.registerUser(email, password, name);
         accessToken = registrationResponse.getBody().jsonPath().getString("accessToken");
 
         System.out.println("Registered user with accessToken: " + accessToken);
@@ -88,8 +87,8 @@ public class RegistrationTest {
         pageObject.goToRegisterPage();
 
         // Заполнение полей
-        String email = apiClient.generateRandomEmail();
-        String name = apiClient.generateRandomName();
+        String email = ApiClient.generateRandomEmail();
+        String name = ApiClient.generateRandomName();
         pageObject.fillName(name);
         pageObject.fillEmail(email);
         pageObject.fillPassword(ApiClient.getUserPassword());
@@ -110,7 +109,7 @@ public class RegistrationTest {
     public void tearDown() {
         if (accessToken != null) {
             // Удаление клиента через API по AccessToken
-            apiClient.deleteUser(accessToken);
+            ApiClient.deleteUser(accessToken);
         }
 
         chromeDriver.quit();

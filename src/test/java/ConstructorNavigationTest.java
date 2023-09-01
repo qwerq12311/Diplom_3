@@ -19,7 +19,6 @@ public class ConstructorNavigationTest {
     private WebDriver chromeDriver;
     private WebDriverWait chromeWait;
     private PageObject pageObject;
-    private ApiClient apiClient;
     private String accessToken;
     private String emailAfterRegistration;
 
@@ -28,15 +27,15 @@ public class ConstructorNavigationTest {
         WebDriverManager.chromedriver().setup();
         chromeDriver = new ChromeDriver();
         chromeWait = new WebDriverWait(chromeDriver, Duration.ofSeconds(15));
+
         pageObject = new PageObject(chromeDriver, chromeWait);
-        apiClient = new ApiClient();
 
         // Создание уникального клиента через API и получение AccessToken
-        apiClient.setup();
-        String email = apiClient.generateRandomEmail();
-        String name = apiClient.generateRandomName();
+        ApiClient.setup();
+        String email = ApiClient.generateRandomEmail();
+        String name = ApiClient.generateRandomName();
         String password = ApiClient.getUserPassword();
-        Response registrationResponse = apiClient.registerUser(email, password, name);
+        Response registrationResponse = ApiClient.registerUser(email, password, name);
         accessToken = registrationResponse.getBody().jsonPath().getString("accessToken");
 
         // Сохранение email после регистрации
@@ -150,7 +149,7 @@ public class ConstructorNavigationTest {
     public void tearDown() {
         if (accessToken != null) {
             // Удаление клиента через API по AccessToken
-            apiClient.deleteUser(accessToken);
+            ApiClient.deleteUser(accessToken);
         }
 
         chromeDriver.quit();

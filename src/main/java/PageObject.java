@@ -138,33 +138,31 @@ public class PageObject {
     }
 
 
-    // Получение локаторов для вкладок
-    public By getFillingsLocator() {
-        return fillingsLocator;
-    }
 
-    public By getSaucesLocator() {
-        return saucesLocator;
-    }
 
-    public By getBunsLocator() {
-        return bunsLocator;
-    }
 
+
+
+    // Методы для проверки активной вкладки
 
     public By getActiveTabLocator() {
         return activeTabLocator;
     }
 
+    public boolean checkActiveBuilderSection(String section) {
+        // Получение актуального название активного раздела
+        String actual = driver.findElement(getActiveTabLocator()).getText();
+        String activeTabLocator = getActiveTabLocator().toString(); // Получаем строковое представление локатора
 
-    // Метод для проверки активной вкладки
-    public boolean isTabActive(By tabLocator) {
-        WebElement tabElement = driver.findElement(tabLocator);
+        // Вывод результатов проверки в консоль
+        System.out.println("Expected Section: " + section);
+        System.out.println("Actual Section: " + actual);
+        System.out.println("Active Tab Locator: " + activeTabLocator);
 
-        // Явное ожидание, чтобы убедиться, что вкладка стала активной
-        wait.until(ExpectedConditions.attributeContains(tabElement, "class", "tab_tab_type_current__2BEPc"));
-        String tabClass = tabElement.getAttribute("class");
-        return tabClass.contains("tab_tab_type_current__2BEPc");
+        // Проверка, что актуальное название соответствует ожидаемому
+        boolean isSectionActive = section.equals(actual);
+
+        return isSectionActive;
     }
 }
 
