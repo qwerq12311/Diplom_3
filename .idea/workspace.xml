@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9098dd21-629e-496e-af48-89673857beea" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PageObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chromedriver" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chromedriver" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LogoutTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LogoutTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/RegistrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RegistrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MainSectionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MainSectionsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,20 +87,11 @@
       <command value="mvn clean test" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.RegistrationTest">
-    <configuration name="LoginTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.MainSectionsTest">
+    <configuration name="MainSectionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Diplom_3" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LoginTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LogoutTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Diplom_3" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LogoutTest" />
+      <option name="MAIN_CLASS_NAME" value="MainSectionsTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -114,6 +102,16 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MainSectionsTest" />
       <option name="METHOD_NAME" value="selectBunSectionTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainSectionsTest.selectSaucesSectionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Diplom_3" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MainSectionsTest" />
+      <option name="METHOD_NAME" value="selectSaucesSectionTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -139,11 +137,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MainSectionsTest" />
+        <item itemvalue="JUnit.MainSectionsTest.selectSaucesSectionTest" />
         <item itemvalue="JUnit.RegistrationTest" />
         <item itemvalue="JUnit.PersonalAccountNavigationTest" />
         <item itemvalue="JUnit.MainSectionsTest.selectBunSectionTest" />
-        <item itemvalue="JUnit.LogoutTest" />
-        <item itemvalue="JUnit.LoginTest" />
       </list>
     </recent_temporary>
   </component>
@@ -157,7 +155,8 @@
       <updated>1692980519531</updated>
       <workItem from="1692980520744" duration="37669000" />
       <workItem from="1693161944131" duration="8146000" />
-      <workItem from="1693596196211" duration="13449000" />
+      <workItem from="1693596196211" duration="14098000" />
+      <workItem from="1693689003741" duration="653000" />
     </task>
     <task id="LOCAL-00001" summary="1. start">
       <created>1692988648397</created>
@@ -187,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693600371952</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="v5. Исправлены все замечания.">
+      <created>1693609706117</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1693609706117</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,6 +204,7 @@
     <MESSAGE value="1. start&#10;2. 1-5 ready . haveToDO - +YaBr + Reports + 6 check" />
     <MESSAGE value="v3 . all done" />
     <MESSAGE value="v4. Исправлены все замечания." />
-    <option name="LAST_COMMIT_MESSAGE" value="v4. Исправлены все замечания." />
+    <MESSAGE value="v5. Исправлены все замечания." />
+    <option name="LAST_COMMIT_MESSAGE" value="v5. Исправлены все замечания." />
   </component>
 </project>

@@ -12,6 +12,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
+import org.junit.Assert;
+
 
 @Epic("Diplom 3")
 @Feature("Переходы по разделам конструктора")
@@ -56,15 +58,14 @@ public class MainSectionsTest {
         // Проверить активность раздела "Соусы"
         boolean isSaucesTabActive = pageObject.checkActiveBuilderSection("Соусы");
 
-        // Вывести результат теста в консоль
-        if (isSaucesTabActive) {
-            System.out.println("Тест на активный раздел 'Соусы' прошел успешно.");
-        } else {
-            System.out.println("Тест на активный раздел 'Соусы' не прошел.");
-        }
+        //  Assert для проверки
+        Assert.assertTrue("Тест на активный раздел 'Соусы' не прошел.", isSaucesTabActive);
+
+        //  Результат теста в консоль
+        System.out.println("Результат теста на активный раздел 'Соусы': " + (isSaucesTabActive ? "Прошел успешно" : "Не прошел"));
     }
 
-    // Метод для проверки активного раздела
+
 
 
     @Test
@@ -83,13 +84,13 @@ public class MainSectionsTest {
         // Проверить активность раздела "Булки"
         boolean isBunsTabActive = pageObject.checkActiveBuilderSection("Булки");
 
-        // Вывести результат теста в консоль
-        if (isBunsTabActive) {
-            System.out.println("Тест на активный раздел 'Булки' прошел успешно.");
-        } else {
-            System.out.println("Тест на активный раздел 'Булки' не прошел.");
-        }
+        //  Assert для проверки
+        Assert.assertTrue("Тест на активный раздел 'Булки' не прошел.", isBunsTabActive);
+
+        //  Результат теста в консоль
+        System.out.println("Результат теста на активный раздел 'Булки': " + (isBunsTabActive ? "Прошел успешно" : "Не прошел"));
     }
+
 
     @Test
     @DisplayName("Тест раздела 'Начинки'")
@@ -105,12 +106,11 @@ public class MainSectionsTest {
         // Проверить активность раздела "Начинки"
         boolean isFillingsTabActive = pageObject.checkActiveBuilderSection("Начинки");
 
-        // Вывести результат теста в консоль
-        if (isFillingsTabActive) {
-            System.out.println("Тест на активный раздел 'Начинки' прошел успешно.");
-        } else {
-            System.out.println("Тест на активный раздел 'Начинки' не прошел.");
-        }
+        //  Assert для проверки
+        Assert.assertTrue("Тест на активный раздел 'Начинки' не прошел.", isFillingsTabActive);
+
+        //  Результат теста в консоль
+        System.out.println("Результат теста на активный раздел 'Начинки': " + (isFillingsTabActive ? "Прошел успешно" : "Не прошел"));
     }
 
 
